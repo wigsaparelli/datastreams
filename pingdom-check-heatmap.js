@@ -25,8 +25,21 @@ async function run(config, context, timeframe, fetcher) {
 
         return Promise.all(data.map(async ctx => {
                 const pingdomConfig = {
-                        id: ctx.sourceId[0]
+                        id: ctx.sourceId[0],
+                        includeUpTime: true,
+                        resultProp: 'downtime'
                 }
                 return pingdomFetcher(pingdomConfig, ctx, timeframe, fetcher);
         }));
+        /*
+    transforms: [
+        {
+            type: 'pick',
+            config: { property: 'series[0].data' }
+        },
+        {
+            type: 'mapValueToState',
+            config: { property: 'value' }
+        }
+        */
 }
