@@ -9,7 +9,7 @@
         async function run(config, context, timeframe, fetcher) {
             let data;
             if (!context.sourceId) {
-                const gremlinQuery = 'g.V().has("sourceName", sourceName).limit(10)';
+                const gremlinQuery = 'g.V().has("sourceName", sourceName).limit(10).valueMap(true)';
                 const bindings = { sourceName: config.vars.sourceName };
                 data = await graphFetcher(config, context, timeframe, fetcher, gremlinQuery, bindings);
                 if (sourceName !== 'Pingdom') {
