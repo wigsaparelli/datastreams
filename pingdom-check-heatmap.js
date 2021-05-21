@@ -9,8 +9,9 @@
         async function run(config, context, timeframe, fetcher) {
             let data;
             if (!context.sourceId) {
+                const sourceName = config.vars.sourceName;
                 const gremlinQuery = 'g.V().has("sourceName", sourceName).limit(10).valueMap(true)';
-                const bindings = { sourceName: config.vars.sourceName };
+                const bindings = { sourceName };
                 data = await graphFetcher(config, context, timeframe, fetcher, gremlinQuery, bindings);
                 if (sourceName !== 'Pingdom') {
                         return data;
