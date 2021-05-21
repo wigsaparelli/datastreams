@@ -20,7 +20,7 @@
             }
             return Promise.all(data.map(async ctx => {
                 const pingdomConfig = {
-                        id: ctx.sourceId[0];
+                        id: ctx.sourceId[0]
                 }
                 return pingdomFetcher(pingdomConfig, ctx, timeframe, fetcher);
             }));
