@@ -1,5 +1,7 @@
-async function run(context, timeframe, config, api) {
+async function getData(params, api) {
     try {
+        const { context, timeframe, config } = params;
+
         /* Determine the context (Pingdom graph nodes) for the Pingdom data request */
         const nodes = await getGraphNodes(context, timeframe, config, api);
 
